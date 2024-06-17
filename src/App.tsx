@@ -1,12 +1,17 @@
 import './App.css'
 
-function App() {
+import { Provider } from "react-redux"
+import { store } from './redux/store'
+import { Navbar } from './components/Navbar'
 
-  return (
-    <div>
-      <h1 className='text-3xl font-bold text-red-900 underline'>Hello word</h1>
-    </div>
-  )
+const App = () => {
+    return (
+        <div>
+            <Provider store={store}>
+                  <Navbar/> 
+            </Provider>
+        </div>
+    )
 }
 
 export default App
