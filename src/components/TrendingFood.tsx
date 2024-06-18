@@ -1,3 +1,5 @@
+import { foods } from "../data/Food"
+import { FoodCard } from "./FoodCard"
 
 
 
@@ -15,10 +17,20 @@ export const TrendingFood = () => {
                     <div>Top Sellers</div>
                 </div>
 
-                <div>
-
-                </div>
            </div>
+                <div className="grid gap-6 mt-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                    {
+                        foods.map((item) => (
+                            <FoodCard
+                                id={item.id}
+                                img={item.img}
+                                title={item.title}
+                                category={item.category}
+                                price={item.price}
+                            />
+                        ))
+                    }
+                </div>
         </div>
     )
 }
