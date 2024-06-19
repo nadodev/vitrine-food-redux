@@ -1,12 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IProduct } from "../../@types/IProduct";
 
-interface IProduct {
-  id: number;
-  title: string;
-  img: string;
-  price: number;
-  quantity: number;
-}
 
 const getInitialCartState = (): Array<IProduct> => {
   const storedCart = localStorage.getItem("cart");
