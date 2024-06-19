@@ -1,8 +1,9 @@
-import toast from "react-hot-toast";
 import { AiFillStar, AiOutlineShoppingCart, AiOutlineStar } from "react-icons/ai";
 import { IoEye } from "react-icons/io5";
-import { addToCart } from "../redux/features/cartSlice";
-import { useAppDispatch } from "../redux/hooks";
+import { useSelector } from "react-redux";
+import { useAddToCart } from "../hooks/useAddToCart";
+import { useRemoveFromCart } from "../hooks/useRemoveFromCart";
+import { RootState } from "../redux/store";
 
 interface propsType {
     id: number;
@@ -15,23 +16,21 @@ interface propsType {
 export const FoodCard = ({
     title, category, price, img, id
 }: propsType) => {
+  const isInCart = useSelector((state: RootState) =>
+    state.cartReducer.some((item) => item.id === id)
+  );
+
+  const product = {
+    id,
+    img,
+    title,
+    category,
+    price,
+  };
 
 
-    const dispatch = useAppDispatch()
-
-    const addProductToCart = () => {
-        const payload = {
-            id,
-            img,
-            title,
-            price: parseFloat(price),
-            quantity: 1
-        }
-
-        dispatch(addToCart(payload))
-        // adicionar toast aqui
-        toast.success("Add to cart")
-    }
+    const { addProductToCart } = useAddToCart(product);
+    const { removeProductFromCart } = useRemoveFromCart(product);
     return (
       <div className="border border-gray-200">
         <div className="text-center border-b border-gray-200">
@@ -61,17 +60,25 @@ export const FoodCard = ({
               <a
                 href={`/product/${id}`}
                 className="flex items-center gap-2 px-4 py-2 text-white cursor-pointer bg-sky-500 hover:bg-accent"
-                onClick={addProductToCart}
               >
                 <IoEye />
                 Ver Produto
               </a>
-              <button
-                className="flex items-center gap-2 px-4 py-2 text-white cursor-pointer bg-pink hover:bg-accent"
-                onClick={addProductToCart}
-              >
-                <AiOutlineShoppingCart /> Add To Cart
-              </button>
+              {isInCart ? (
+                <button
+                  className="flex items-center gap-2 px-4 py-2 text-white cursor-pointer bg-pink hover:bg-accent"
+                  onClick={removeProductFromCart}
+                >
+                  Remover
+                </button>
+              ) : (
+                <button
+                  className="flex items-center gap-2 px-4 py-2 text-white cursor-pointer bg-sky-800 hover:bg-accent"
+                  onClick={addProductToCart}
+                >
+                  <AiOutlineShoppingCart /> Add To Cart
+                </button>
+              )}
             </div>
           </div>
         </div>
