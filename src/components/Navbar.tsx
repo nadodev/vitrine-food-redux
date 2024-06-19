@@ -1,7 +1,7 @@
 import { AiOutlineShoppingCart } from "react-icons/ai"
 import { useAppSelector } from "../redux/hooks"
 
-export const Navbar = () => {
+export const Navbar = ({setShowCart}) => {
 
     const cartCount = useAppSelector((state) => state.cartReducer.length)
     return (
@@ -12,7 +12,7 @@ export const Navbar = () => {
                         <img src="https://thebravecoders-ecommerce-electronic.netlify.app/logo.png" alt="logo" />
                     </div>
                     <div className="flex items-center gap-4 md:gap-8">
-                        <div className="text-gray-500 text-[32px] relative">
+                        <div className="text-gray-500 text-[32px] relative cursor-pointer" onClick={() => setShowCart(true)}>
                             <AiOutlineShoppingCart />
                              <div className="absolute top-[-15px] right-[-10px] bg-red-600 w-[25px] h-[25px] rounded-full text-white text-[14px] grid place-items-center">
                                {cartCount}

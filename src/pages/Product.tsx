@@ -4,6 +4,7 @@ import CreateCartItemButton from "../components/CreateCartItemButton";
 import RemoveCartItemButton from "../components/RemoveCartItemButton";
 import { foods } from "../data/Food";
 import { RootState } from "../redux/store";
+import { IProduct } from "../@types/IProduct";
 
 interface Product {
   id: number;
@@ -12,12 +13,13 @@ interface Product {
   title: string;
   price: number | string;
   description?: string;
+  quantity: number;
 }
 
 export const Product = () => {
   const { productID } = useParams<{ productID: string }>(); // Defina o tipo do parâmetro productID
 
-  const product: Product | undefined = foods.find(
+  const product: IProduct | undefined = foods.find(
     (p) => String(p.id) === productID
   );
 
@@ -31,20 +33,20 @@ export const Product = () => {
   }
 
   return (
-    <div className="max-w-2xl mx-auto my-8 p-4 bg-white rounded-lg shadow-md">
+    <div className="max-w-2xl p-4 mx-auto my-8 bg-white rounded-lg shadow-md">
       <img
         src={product.img}
         alt={product.title}
-        className="w-full h-64 object-cover rounded-lg mb-4"
+        className="object-cover w-full h-64 mb-4 rounded-lg"
       />
-      <div className="flex gap-2 items-center">
-        <h2 className="text-3xl font-bold mb-2">{product.title}</h2>
-        <span className="block font-bold text-sky-500 text-xl">
+      <div className="flex items-center gap-2">
+        <h2 className="mb-2 text-3xl font-bold">{product.title}</h2>
+        <span className="block text-xl font-bold text-sky-500">
           {product.category}
         </span>
       </div>
       {product.description && (
-        <p className="text-gray-700 mb-4">{product.description}</p>
+        <p className="mb-4 text-gray-700">{product.description}</p>
       )}
       <p className="text-xl font-semibold text-gray-900">
         R${Number(product.price).toFixed(2)}

@@ -8,8 +8,12 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { Home } from './pages/Home'
 import { Product } from './pages/Product'
 import { Footer } from './components/Footer'
+import { useState } from 'react'
+import { Cart } from './components/Cart'
 
 const App = () => {
+
+  const [showCart , setShowCart] = useState(false);
   const router = createBrowserRouter([
     {
       path: "/",
@@ -24,10 +28,13 @@ const App = () => {
   return (
     <div>
       <Provider store={store}>
-        <Navbar/> 
+        <Navbar setShowCart={setShowCart}/> 
+        {
+          showCart && <Cart setShowCart={setShowCart}/>
+        }
         <RouterProvider router={router} />
         <Footer/> 
-        <Toaster position='top-right' reverseOrder={false}/>
+        <Toaster position='bottom-right' reverseOrder={false}/>
       </Provider>
     </div>
   )
