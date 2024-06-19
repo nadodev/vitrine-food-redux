@@ -25,7 +25,7 @@ export const FoodCard = ({
           />
         </div>
 
-        <div className="px-8 py-4">
+        <div className="px-4 py-4">
           <p className="text-gray-500 text-[14px] font-medium">{category}</p>
           <h2 className="font-medium">{title}</h2>
 
@@ -42,10 +42,10 @@ export const FoodCard = ({
             <div className="flex gap-2">
               <a
                 href={`/product/${id}`}
-                className="flex items-center gap-2 px-4 py-2 text-white cursor-pointer bg-sky-500 hover:bg-accent"
+                className="flex items-center gap-2 px-4 py-2 mt-4 text-white rounded bg-zinc-500 hover:bg-zinc-600"
               >
                 <IoEye />
-                Ver Produto
+                Ver
               </a>
               {isInCart ? (
                 <RemoveCartItemButton id={id} />

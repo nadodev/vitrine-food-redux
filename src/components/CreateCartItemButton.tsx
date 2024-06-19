@@ -26,7 +26,7 @@ const CreateCartItemButton: React.FC<IProduct> = ({ id, img, title, price }) => 
 
   return (
     <button
-      className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+      className="flex items-center gap-2 px-4 py-2 mt-4 text-white bg-blue-500 rounded hover:bg-blue-600"
       onClick={addProductToCart}
     >
       <AiOutlineShoppingCart /> Adicionar ao Carrinho

@@ -7,6 +7,7 @@ import { Toaster } from 'react-hot-toast'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { Home } from './pages/Home'
 import { Product } from './pages/Product'
+import { Footer } from './components/Footer'
 
 const App = () => {
   const router = createBrowserRouter([
@@ -25,6 +26,7 @@ const App = () => {
       <Provider store={store}>
         <Navbar/> 
         <RouterProvider router={router} />
+        <Footer/> 
         <Toaster position='top-right' reverseOrder={false}/>
       </Provider>
     </div>
