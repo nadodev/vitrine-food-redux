@@ -55,6 +55,7 @@ export const FoodCard = ({
                   img={img}
                   title={title}
                   price={price}
+                  quantity={0}
                 />
               )}
             </div>
