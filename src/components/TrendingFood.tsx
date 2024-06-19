@@ -4,8 +4,7 @@ import { usePagination } from "../hooks/usePagination";
 import { FoodCard } from "./FoodCard";
 
 export const TrendingFood = () => {
-  const { currentPage, totalPages, currentItems, handlePageClick } =
-    usePagination(8);
+  const { currentPage, totalPages, currentItems, handlePageClick } = usePagination(8);
 
   return (
     <div className="container mt-32">
@@ -21,7 +20,8 @@ export const TrendingFood = () => {
             img={item.img}
             title={item.title}
             category={item.category}
-            price={item.price}
+            price={Number(item.price)}
+            quantity={0}
           />
         ))}
       </div>

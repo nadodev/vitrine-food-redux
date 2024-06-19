@@ -1,17 +1,17 @@
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import CreateCartItemButton from "../components/CreateCartItemButton";
+import RemoveCartItemButton from "../components/RemoveCartItemButton";
 import { foods } from "../data/Food";
-import { useAddToCart } from "../hooks/useAddToCart";
-import { useRemoveFromCart } from "../hooks/useRemoveFromCart";
 import { RootState } from "../redux/store";
 
 interface Product {
   id: number;
   img: string;
-  category: string;
+  category?: string;
   title: string;
-  price: string;
-  description?: string; 
+  price: number | string;
+  description?: string;
 }
 
 export const Product = () => {
@@ -25,8 +25,6 @@ export const Product = () => {
     state.cartReducer.some((item) => item.id === product?.id)
   );
 
- const { addProductToCart } = useAddToCart(product);
- const { removeProductFromCart } = useRemoveFromCart(product);
 
   if (!product) {
     return <div>Produto não encontrado</div>;
@@ -52,21 +50,8 @@ export const Product = () => {
         R${Number(product.price).toFixed(2)}
       </p>
       <div className="flex gap-2">
-        <button
-          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-          onClick={addProductToCart}
-        >
-          Adicionar ao Carrinho
-        </button>
-        {/* Renderizar botão "Remover do Carrinho" apenas se o produto estiver no carrinho */}
-        {isInCart && (
-          <button
-            className="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-            onClick={removeProductFromCart}
-          >
-            Remover do Carrinho
-          </button>
-        )}
+        <CreateCartItemButton {...product}/>
+        {isInCart && <RemoveCartItemButton id={product.id} />}
       </div>
     </div>
   );
