@@ -1,7 +1,10 @@
 import { AiOutlineShoppingCart } from "react-icons/ai"
 import { useAppSelector } from "../redux/hooks"
+import { IShowCartProps } from "../@types/IShowCartProps"
 
-export const Navbar = ({setShowCart}) => {
+
+
+export const Navbar = ({setShowCart}: IShowCartProps) => {
 
     const cartCount = useAppSelector((state) => state.cartReducer.length)
     return (

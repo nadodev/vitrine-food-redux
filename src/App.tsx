@@ -12,8 +12,8 @@ import { useState } from 'react'
 import { Cart } from './components/Cart'
 
 const App = () => {
+  const [showCart, setShowCart] = useState<boolean>(false);
 
-  const [showCart , setShowCart] = useState(false);
   const router = createBrowserRouter([
     {
       path: "/",

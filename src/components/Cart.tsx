@@ -2,8 +2,9 @@ import { RxCross1 } from "react-icons/rx";
 import { useAppSelector } from "../redux/hooks";
 import { IProduct } from "../@types/IProduct";
 import CartProduct from "./CartProduct";
+import { IShowCartProps } from "../@types/IShowCartProps";
 
-export const Cart = ({ setShowCart }) => {
+export const Cart = ({ setShowCart }: IShowCartProps) => {
     const products = useAppSelector((state) => state.cartReducer);
 
     const getTotal = () => {
