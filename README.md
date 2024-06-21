@@ -43,7 +43,7 @@ yarn install
 npm run dev
 ```
 
-### A aplicação estará disponível em http://localhost:3000.
+### A aplicação estará disponível em http://localhost:5173/.
 
 ## Estrutura do Projeto
 - src/
@@ -66,8 +66,4 @@ Se você deseja contribuir para o projeto, sinta-se à vontade para abrir issues
 ## Licença
 Este projeto está licenciado sob a Licença MIT. Veja o arquivo LICENSE para mais detalhes.
 
-Contato
-Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato:
 
-- Email: seu-email@example.com
-- GitHub: seu-usuario
