@@ -4,7 +4,6 @@ import CreateCartItemButton from "../components/CreateCartItemButton";
 import RemoveCartItemButton from "../components/RemoveCartItemButton";
 import { foods } from "../data/Food";
 import { RootState } from "../redux/store";
-import { IProduct } from "../@types/IProduct";
 
 interface Product {
   id: number;
@@ -16,10 +15,11 @@ interface Product {
   quantity: number;
 }
 
+
 export const Product = () => {
   const { productID } = useParams<{ productID: string }>(); // Defina o tipo do parâmetro productID
 
-  const product: IProduct | undefined = foods.find(
+  const product: Product | undefined = foods.find(
     (p) => String(p.id) === productID
   );
 
@@ -52,7 +52,14 @@ export const Product = () => {
         R${Number(product.price).toFixed(2)}
       </p>
       <div className="flex gap-2">
-        <CreateCartItemButton {...product}/>
+        <CreateCartItemButton  
+            id={product.id}
+            img={product.img}
+            price={product.price}
+            quantity={product.quantity}
+            title={product.title}
+            description={product.description}
+        />
         {isInCart && <RemoveCartItemButton id={product.id} />}
       </div>
     </div>
