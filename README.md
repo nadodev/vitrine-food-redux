@@ -23,10 +23,10 @@ Esta é uma aplicação de carrinho de compras desenvolvida com React, Vite, Typ
 ## Instalação
 
 1. Clone o repositório:
-   ```bash
-   git clone https://github.com/seu-usuario/nome-do-repositorio.git
-   cd nome-do-repositorio
-
+```bash
+git clone https://github.com/nadodev/vitrine-food-redux.git
+cd vitrine-food-redux
+```
 ## Instale as dependências:
 ```javascript
 npm install
