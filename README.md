@@ -50,6 +50,9 @@ npm run dev
 - components/: Componentes reutilizáveis da aplicação.
 - features/: Funcionalidades específicas da aplicação (ex: carrinho de compras).
 - app/: Configuração da store do Redux.
+- redux/: hooks e stores arquivos de configuração do redux
+- pages/: paginas da aplicação
+- data/: arquivos mock para aplicação
 - utils/: Utilitários e funções auxiliares.
 - App.tsx: Componente principal da aplicação.
 - main.tsx: Ponto de entrada da aplicação.
